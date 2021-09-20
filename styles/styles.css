@@ -97,6 +97,7 @@ body {
   left: 40px;
   top: 85px;
   transform: rotate(10deg);
+  opacity: 90%;
 }
 
 .camera-wrapper {
