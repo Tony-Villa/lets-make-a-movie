@@ -143,11 +143,12 @@ body {
   bottom: 0;
   height: 115px;
   width: 100%;
+  border-top: 2px solid black;
 }
 
 .film-frame {
   background: url('../assets/film-frame.png');
-  background-repeat: no-repeat;
+  /* background-repeat: no-repeat; */
   height: 100%;
 }
 
