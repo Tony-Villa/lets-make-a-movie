@@ -2,6 +2,8 @@
 // Display Elements
 const $controllerEl = $('.game-controls');
 const $filmWrapEl = $('.film-wrapper');
+const $filmCan1El = $('.film-can-1');
+const $filmCan2El = $('.film-can-2');
 
 // Buttons
 const $playBtn = $('#play-button');
@@ -15,3 +17,9 @@ $playBtn.on('click', () => {
   //   $controllerEl.fadeIn(1500);
   //   $filmWrapEl.append('<div class="film-frame"></div>');
 });
+
+// $rollCamBtn.on('click', () => {
+//   $filmCan1El.addClass('.spin');
+//   $filmCan2El.addClass('.spin');
+//   console.log('Rolling!');
+// });

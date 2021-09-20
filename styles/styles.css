@@ -1,7 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Limelight&display=swap');
+
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+
+body {
+  font-family: 'Limelight', cursive;
 }
 
 .bg {
@@ -31,6 +37,29 @@
   width: 750px;
   margin: 0 auto;
   margin-top: 1.5em;
+  /* background-color: #cdcecd; */
+  background: radial-gradient(ellipse at top, #cdcecd, transparent),
+    radial-gradient(ellipse at bottom, #cdcecd, transparent);
+}
+
+.score-board {
+  position: absolute;
+  border: 2px solid black;
+  border-radius: 5px;
+  height: 90px;
+  width: 35%;
+  left: 15px;
+  top: 15px;
+  padding: 10px;
+}
+
+.score-item-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.score-item {
+  margin-bottom: 0.5em;
 }
 
 .camera-wrapper {
@@ -91,6 +120,10 @@
   margin-top: 1.5em;
   width: 500px;
   justify-content: space-around;
+}
+
+.spin {
+  transform: rotate(45deg);
 }
 
 .hidden {
