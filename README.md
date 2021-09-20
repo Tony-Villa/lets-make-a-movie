@@ -1,8 +1,8 @@
 # Table of Contents
 
-- Game Description
-- User Stories
-- Wireframes
+- [Game Description](#let's-make-a-movie)
+- [User Stories](#user-stories)
+- [Wireframes](#Wireframes)
 
 # Let's Make a Movie
 
@@ -57,3 +57,5 @@ If the player interacts with the **Try Again** button, it will reset the game.
 The user wins the game if they can keep the shoot up and running for 45 seconds.
 
 Once the user wins, a 'congratulations' note will appear and the screen will smoothly lower and reveal the **Action!** button, so the user can play again.
+
+# Wireframes
