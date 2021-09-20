@@ -160,10 +160,6 @@ body {
   justify-content: space-around;
 }
 
-.spin {
-  transform: rotate(45deg);
-}
-
 .hidden {
   display: none;
 }

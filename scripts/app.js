@@ -11,6 +11,34 @@ const $lightsBtn = $('.lights');
 const $rollCamBtn = $('.roll-cam');
 const $reloadMagBtn = $('.reload-mag');
 
+// Game Objects
+
+const frameRate = {
+  startFrame: 23.98,
+  currentFrame: 23.98,
+  isRolling: true,
+};
+
+const filmRemain = {
+  startFrame: 10,
+  currentFrame: 10,
+  isEmpty: false,
+  filmDecrement: function () {
+    this.currentFrame -= 1;
+  },
+  magReload: function () {
+    this.currentFrame += this.startFrame - this.currentFrame;
+  },
+};
+
+// Functions
+
+const frameDecrement = () => {
+  return Math.floor(Math.random() * 5) + 1;
+};
+
+// Event Listeners
+
 $playBtn.on('click', () => {
   $playBtn.fadeOut(1000);
   $controllerEl.removeClass('hidden');
