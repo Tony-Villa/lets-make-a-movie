@@ -34,20 +34,41 @@
 }
 
 .camera-wrapper {
-  border: 1px solid blue;
   position: absolute;
   height: 250px;
   bottom: 115px;
   left: 200px;
-  width: 17%;
+  width: 20%;
 }
 
 .cam-body {
   position: absolute;
   background: url('../assets/cam.png');
+  background-repeat: no-repeat;
   height: 180px;
   width: 100%;
   bottom: 0;
+  left: 20px;
+}
+
+.film-can-1 {
+  position: absolute;
+  background: url('../assets/film-can.png');
+  background-repeat: no-repeat;
+  height: 55px;
+  width: 55px;
+  top: 26px;
+  left: 57px;
+}
+
+.film-can-2 {
+  position: absolute;
+  background: url('../assets/film-can.png');
+  background-repeat: no-repeat;
+  height: 55px;
+  width: 55px;
+  top: 64px;
+  left: 7px;
 }
 
 .film-wrapper {
