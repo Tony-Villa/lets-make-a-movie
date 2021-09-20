@@ -4,8 +4,13 @@
   padding: 0;
 }
 
+.bg {
+  position: relative;
+}
+
 .title {
   text-align: center;
+  margin-top: 0.5em;
 }
 
 .start-game {
@@ -20,6 +25,7 @@
 }
 
 .movie-screen {
+  position: relative;
   border: 3px solid black;
   height: 500px;
   width: 750px;
@@ -27,12 +33,28 @@
   margin-top: 1.5em;
 }
 
+.film-wrapper {
+  position: absolute;
+  bottom: 0;
+  height: 115px;
+  width: 100%;
+}
+
+.film-frame {
+  background: url('../assets/film-frame.png');
+  /* background-repeat: no-repeat; */
+  height: 100%;
+}
+
 .game-controls {
   display: flex;
   justify-content: center;
   margin: 0 auto;
   margin-top: 1.5em;
-  border: 1px solid black;
   width: 500px;
   justify-content: space-around;
+}
+
+.hidden {
+  display: none;
 }
