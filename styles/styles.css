@@ -34,12 +34,13 @@ body {
   position: relative;
   border: 3px solid black;
   height: 500px;
-  width: 750px;
+  width: 732px;
   margin: 0 auto;
   margin-top: 1.5em;
   /* background-color: #cdcecd; */
   background: radial-gradient(ellipse at top, #cdcecd, transparent),
     radial-gradient(ellipse at bottom, #cdcecd, transparent);
+  overflow: hidden;
 }
 
 .score-board {
@@ -68,11 +69,41 @@ body {
   font-size: 20px;
 }
 
+.light-wrapper {
+  /* border: 1px solid blue; */
+  position: absolute;
+  height: 380px;
+  width: 450px;
+  right: 0;
+}
+
+.light-fixture {
+  position: absolute;
+  background: url('../assets/light.png');
+  background-repeat: no-repeat;
+  width: 120px;
+  height: 140px;
+  top: 0px;
+  transform: rotate(10deg);
+}
+
+.light-beam {
+  /* border: 1px solid orange; */
+  position: absolute;
+  background: url('../assets/light-beam.png');
+  background-repeat: no-repeat;
+  width: 480px;
+  height: 280px;
+  left: 40px;
+  top: 85px;
+  transform: rotate(10deg);
+}
+
 .camera-wrapper {
   position: absolute;
   height: 250px;
   bottom: 115px;
-  left: 200px;
+  left: 150px;
   width: 20%;
 }
 

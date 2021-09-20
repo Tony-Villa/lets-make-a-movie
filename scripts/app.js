@@ -18,8 +18,8 @@ $playBtn.on('click', () => {
   //   $filmWrapEl.append('<div class="film-frame"></div>');
 });
 
-// $rollCamBtn.on('click', () => {
-//   $filmCan1El.addClass('.spin');
-//   $filmCan2El.addClass('.spin');
-//   console.log('Rolling!');
-// });
+$rollCamBtn.on('click', () => {
+  $filmCan1El.addClass('.spin');
+  $filmCan2El.addClass('.spin');
+  console.log('Rolling!');
+});
