@@ -17,6 +17,7 @@ body {
 .title {
   text-align: center;
   margin-top: 0.5em;
+  font-size: 48px;
 }
 
 .start-game {
@@ -67,6 +68,28 @@ body {
 
 .score-item-actual {
   font-size: 20px;
+}
+
+.end-screen {
+  position: absolute;
+  width: 50%;
+  border: 2px solid black;
+  border-radius: 10px;
+  right: 50px;
+  top: 10px;
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 10px;
+  box-shadow: 5px 5px 15px 5px rgba(0, 0, 0, 0.51);
+}
+
+.end-screen h2 {
+  font-size: 32px;
+  margin-bottom: 0.5em;
+}
+
+.end-screen p {
+  font-size: 22px;
+  margin-bottom: 1em;
 }
 
 .light-wrapper {
