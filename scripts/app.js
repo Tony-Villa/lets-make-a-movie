@@ -27,11 +27,18 @@ const frameRandom = () => {
 
 // Game Objects
 const timer = {
-  timeRemaining: 45,
+  timeRemaining: 5,
+  isOutOfTime: false,
 
   timerDec: function () {
-    setInterval(() => {
+    const timerInterval = setInterval(() => {
       this.timeRemaining--;
+
+      if (this.timeRemaining < 0) {
+        clearInterval(timerInterval);
+        this.timeRemaining = 0;
+        this.isOutOfTime = true;
+      }
     }, 1000);
   },
 
