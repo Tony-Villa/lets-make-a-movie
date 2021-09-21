@@ -13,11 +13,13 @@ const $timeRemaning = $('.time-remain-actual');
 
 // Button Variables
 const $playBtn = $('#play-button');
+const $actionBtn = $('.action');
 const $lightsBtn = $('.lights');
 const $rollCamBtn = $('.roll-cam');
 const $reloadMagBtn = $('.reload-mag');
 
 // HTML Variables
+const $instructions = $('.instructions');
 const filmFrame = '<div class="film-frame"></div>';
 
 // Randomizers
@@ -226,7 +228,11 @@ $playBtn.on('click', () => {
   // Style Changes
   $playBtn.fadeOut(1000);
   $controllerEl.removeClass('hidden');
+  $instructions.removeClass('hidden');
+});
 
+$actionBtn.on('click', () => {
+  $instructions.addClass('hidden');
   // Game Display Changes
   timer.renderTimer();
 
@@ -235,9 +241,6 @@ $playBtn.on('click', () => {
   filmRemain.renderFilmRemain();
 
   lighting.powerSurge();
-
-  // Init Game
-  // checkWinLoss();
 });
 
 $rollCamBtn.on('click', () => {
