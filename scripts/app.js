@@ -25,6 +25,10 @@ const frameRandom = () => {
   return Math.floor(Math.random() * 3) + 1;
 };
 
+// Win/Loss Variables
+let youWin = false;
+let youLose = false;
+
 // Game Objects
 const timer = {
   timeRemaining: 45,
@@ -34,10 +38,13 @@ const timer = {
     const timerInterval = setInterval(() => {
       this.timeRemaining--;
 
-      if (this.timeRemaining < 0) {
+      if (this.timeRemaining <= 0) {
         clearInterval(timerInterval);
         this.timeRemaining = 0;
         this.isOutOfTime = true;
+        youWin = true;
+        checkWinLoss();
+        return youWin;
       }
     }, 1000);
   },
@@ -50,6 +57,10 @@ const timer = {
 
   checkTimer: function () {
     return this.isOutOfTime;
+  },
+
+  resetTimer: function () {
+    this.timeRemaining = 45;
   },
 
   renderTimer: function () {
@@ -84,10 +95,13 @@ const frameRate = {
     const frameInterval = setInterval(() => {
       this.currentFrame -= frameRandom();
 
-      if (this.currentFrame < 0) {
+      if (this.currentFrame <= 0) {
         clearInterval(frameInterval);
         this.currentFrame = 0;
         this.isRolling = false;
+        youLose = true;
+        checkWinLoss();
+        return youLose;
       }
     }, 1000);
   },
@@ -100,6 +114,10 @@ const frameRate = {
 
   checkFramRate: function () {
     return this.isRolling;
+  },
+
+  resetFrames: function () {
+    this.currentFrame = 23.98;
   },
 
   renderFrameRate: function () {
@@ -118,10 +136,13 @@ const filmRemain = {
       this.currentFrame--;
       this.renderFrames();
 
-      if (this.currentFrame < 0) {
+      if (this.currentFrame <= 0) {
         clearInterval(decInterval);
         this.currentFrame = 0;
         this.isEmpty = true;
+        youLose = true;
+        checkWinLoss();
+        return youLose;
       }
     }, 1000);
   },
@@ -152,6 +173,10 @@ const filmRemain = {
     return this.isEmpty;
   },
 
+  resetMag: function () {
+    this.currentFrame = 10;
+  },
+
   renderFilmRemain: function () {
     this.filmDecrement();
     this.renderRemaining();
@@ -173,28 +198,47 @@ const decScores = (time = 1000) => {
   // }, time);
 };
 
+const checkWinLoss = () => {
+  if (youWin) {
+    timer.resetTimer();
+    frameRate.resetFrames();
+    filmRemain.resetMag();
+    console.log('You win!');
+  }
+  if (youLose) {
+    timer.resetTimer();
+    frameRate.resetFrames();
+    filmRemain.resetMag();
+    console.log('You lose!');
+  }
+};
+
 // Game Loop
+/*
 const checkWinLoss = () => {
   console.log('win loss invoked');
-  while (frameRate.isRolling === true && filmRemain.isEmpty === false && timer.isOutOfTime === false) {
-    if (frameRate.isRolling === true) {
+  while (frameRate.isRolling && !filmRemain.isEmpty && !timer.isOutOfTime) {
+    if (frameRate.isRolling) {
       frameRate.checkFramRate();
       console.log('Checking Roll');
     }
-    if (filmRemain.isEmpty === false) {
-      filmRemain.checkMag('Checking Mag');
+    if (!filmRemain.isEmpty) {
+      filmRemain.checkMag();
+      console.log('Checking Mag');
     }
-    if (timer.isOutOfTime === false) {
-      timer.checkTimer('Checking Time');
+    if (!timer.isOutOfTime) {
+      timer.checkTimer();
+      console.log('Check Timer');
     }
     console.log('Game is active');
-    if (frameRate.isRolling == false || filmRemain.isEmpty == true) {
+    if (!frameRate.isRolling || filmRemain.isEmpty) {
       console.log('You Lose');
-    } else if (timer.isOutOfTime === true && frameRate.isRolling === true && filmRemain.isEmpty === false) {
+    } else if (timer.isOutOfTime && frameRate.isRolling && !filmRemain.isEmpty) {
       console.log('You Win');
     }
   }
 };
+*/
 
 // Event Listeners
 $playBtn.on('click', () => {
