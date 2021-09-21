@@ -20,6 +20,8 @@ const $reloadMagBtn = $('.reload-mag');
 
 // HTML Variables
 const $instructions = $('.instructions');
+const $winner = $('#win-screen');
+const $loser = $('#lose-screen');
 const filmFrame = '<div class="film-frame"></div>';
 
 // Randomizers
@@ -206,20 +208,21 @@ const decScores = (time = 1000) => {
   frameRate.renderFrameRate();
 };
 
+const resetGame = () => {
+  lighting.resetLights();
+  timer.resetTimer();
+  frameRate.resetFrames();
+  filmRemain.resetMag();
+};
+
 const checkWinLoss = () => {
   if (youWin) {
-    lighting.resetLights();
-    timer.resetTimer();
-    frameRate.resetFrames();
-    filmRemain.resetMag();
-    console.log('You win!');
+    resetGame();
+    $winner.removeClass('hidden');
   }
   if (youLose) {
-    lighting.resetLights();
-    timer.resetTimer();
-    frameRate.resetFrames();
-    filmRemain.resetMag();
-    console.log('You lose!');
+    resetGame();
+    $loser.removeClass('hidden');
   }
 };
 
