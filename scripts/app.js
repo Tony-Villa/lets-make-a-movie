@@ -45,12 +45,14 @@ const timer = {
         youWin = true;
         checkWinLoss();
         return youWin;
+      } else if (youLose || youWin) {
+        clearInterval(timerInterval);
       }
     }, 1000);
   },
 
   timerDisplay: function () {
-    setInterval(() => {
+    const timeInterval = setInterval(() => {
       $timeRemaning.html(this.timeRemaining);
     }, 1000);
   },
@@ -83,6 +85,10 @@ const lighting = {
       }
     }, 1000);
   },
+
+  resetLights: function () {
+    this.isOn = true;
+  },
 };
 
 const frameRate = {
@@ -102,6 +108,8 @@ const frameRate = {
         youLose = true;
         checkWinLoss();
         return youLose;
+      } else if (youLose || youWin) {
+        clearInterval(frameInterval);
       }
     }, 1000);
   },
@@ -143,6 +151,8 @@ const filmRemain = {
         youLose = true;
         checkWinLoss();
         return youLose;
+      } else if (youLose || youWin) {
+        clearInterval(decInterval);
       }
     }, 1000);
   },
@@ -192,53 +202,24 @@ const animateFilmCans = () => {
 const decScores = (time = 1000) => {
   filmRemain.renderFilmRemain();
   frameRate.renderFrameRate();
-  // setInterval(() => {
-  //   filmRemain.renderFilmRemain();
-  //   frameRate.renderFrameRate();
-  // }, time);
 };
 
 const checkWinLoss = () => {
   if (youWin) {
+    lighting.resetLights();
     timer.resetTimer();
     frameRate.resetFrames();
     filmRemain.resetMag();
     console.log('You win!');
   }
   if (youLose) {
+    lighting.resetLights();
     timer.resetTimer();
     frameRate.resetFrames();
     filmRemain.resetMag();
     console.log('You lose!');
   }
 };
-
-// Game Loop
-/*
-const checkWinLoss = () => {
-  console.log('win loss invoked');
-  while (frameRate.isRolling && !filmRemain.isEmpty && !timer.isOutOfTime) {
-    if (frameRate.isRolling) {
-      frameRate.checkFramRate();
-      console.log('Checking Roll');
-    }
-    if (!filmRemain.isEmpty) {
-      filmRemain.checkMag();
-      console.log('Checking Mag');
-    }
-    if (!timer.isOutOfTime) {
-      timer.checkTimer();
-      console.log('Check Timer');
-    }
-    console.log('Game is active');
-    if (!frameRate.isRolling || filmRemain.isEmpty) {
-      console.log('You Lose');
-    } else if (timer.isOutOfTime && frameRate.isRolling && !filmRemain.isEmpty) {
-      console.log('You Win');
-    }
-  }
-};
-*/
 
 // Event Listeners
 $playBtn.on('click', () => {
