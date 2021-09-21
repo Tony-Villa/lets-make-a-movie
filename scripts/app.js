@@ -48,6 +48,10 @@ const timer = {
     }, 1000);
   },
 
+  checkTimer: function () {
+    return this.isOutOfTime;
+  },
+
   renderTimer: function () {
     this.timerDec();
     this.timerDisplay();
@@ -92,6 +96,10 @@ const frameRate = {
     setInterval(() => {
       $frameRemaning.html(this.currentFrame);
     }, 1000);
+  },
+
+  checkFramRate: function () {
+    return this.isRolling;
   },
 
   renderFrameRate: function () {
@@ -141,9 +149,7 @@ const filmRemain = {
   },
 
   checkMag: function () {
-    if (this.currentFrame < 1) {
-      this.isEmpty = true;
-    }
+    return this.isEmpty;
   },
 
   renderFilmRemain: function () {
@@ -167,6 +173,29 @@ const decScores = (time = 1000) => {
   // }, time);
 };
 
+// Game Loop
+const checkWinLoss = () => {
+  console.log('win loss invoked');
+  while (frameRate.isRolling === true && filmRemain.isEmpty === false && timer.isOutOfTime === false) {
+    if (frameRate.isRolling === true) {
+      frameRate.checkFramRate();
+      console.log('Checking Roll');
+    }
+    if (filmRemain.isEmpty === false) {
+      filmRemain.checkMag('Checking Mag');
+    }
+    if (timer.isOutOfTime === false) {
+      timer.checkTimer('Checking Time');
+    }
+    console.log('Game is active');
+    if (frameRate.isRolling == false || filmRemain.isEmpty == true) {
+      console.log('You Lose');
+    } else if (timer.isOutOfTime === true && frameRate.isRolling === true && filmRemain.isEmpty === false) {
+      console.log('You Win');
+    }
+  }
+};
+
 // Event Listeners
 $playBtn.on('click', () => {
   // Style Changes
@@ -183,18 +212,20 @@ $playBtn.on('click', () => {
   lighting.powerSurge();
 
   // Init Game
-  gameInit();
+  // checkWinLoss();
 });
 
 $rollCamBtn.on('click', () => {
   if (frameRate.isRolling) {
-    frameRate.currentFrame++;
-    frameRate.renderCurrent();
+    if (frameRate.currentFrame < 23) {
+      frameRate.currentFrame++;
+      frameRate.renderCurrent();
+    }
   }
 });
 
 $reloadMagBtn.on('click', () => {
-  if (!filmRemain.isEmpty) {
+  if (!filmRemain.isEmpty && lighting.isOn) {
     filmRemain.magReload();
     filmRemain.renderRemaining();
   }
@@ -205,17 +236,3 @@ $lightsBtn.on('click', () => {
   $lightBeam.removeClass('hidden');
   lighting.powerSurge();
 });
-
-// Game Loop
-const gameInit = () => {
-  while (frameRate.isRolling === true && filmRemain.isEmpty === false && timer.isOutOfTime == true) {
-    if (
-      (frameRate.isRolling === false && timer.isOutOfTime === false) ||
-      (filmRemain.isEmpty === true && timer.isOutOfTime === false)
-    ) {
-      console.log('You Lose');
-    } else if (timer.isOutOfTime === true && frameRate.isRolling === true && filmRemain.isEmpty === false) {
-      console.log('You Win');
-    }
-  }
-};
