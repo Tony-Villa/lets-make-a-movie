@@ -1,25 +1,36 @@
-// Variables
+////////// Variables ////////////
 // Display Elements
 const $controllerEl = $('.game-controls');
 const $filmWrapEl = $('.film-wrapper');
 const $filmCan1El = $('.film-can-1');
 const $filmCan2El = $('.film-can-2');
 
-// Score Elements
+// Score Element Variables
 const $filmRemaning = $('.film-remain-actual');
 
-// Buttons
+// Button Variables
 const $playBtn = $('#play-button');
 const $lightsBtn = $('.lights');
 const $rollCamBtn = $('.roll-cam');
 const $reloadMagBtn = $('.reload-mag');
 
-// Game Objects
+// HTML Variables
+const filmFrame = '<div class="film-frame"></div>';
 
+// Randomizers
+const frameRandom = () => {
+  return Math.floor(Math.random() * 7) + 1;
+};
+
+// Game Objects
 const frameRate = {
   startFrame: 23.98,
   currentFrame: 23.98,
   isRolling: true,
+
+  frameDecrement: function () {
+    this.currentFrame -= frameRandom();
+  },
 };
 
 const filmRemain = {
@@ -28,16 +39,32 @@ const filmRemain = {
   isEmpty: false,
   filmDecrement: function () {
     this.currentFrame -= 1;
+    this.renderFrames();
   },
   magReload: function () {
     this.currentFrame += this.startFrame - this.currentFrame;
+    this.renderFrames();
+  },
+  renderFrames: function () {
+    $filmWrapEl.empty();
+    for (let i = 0; i <= this.currentFrame; i++) {
+      $filmWrapEl.append(filmFrame);
+    }
+  },
+  renderRemaining: function () {
+    $filmRemaning.html(filmRemain.currentFrame);
+  },
+  renderFilmRemain: function () {
+    this.filmDecrement();
+    this.renderRemaining();
   },
 };
 
 // Functions
 
-const frameDecrement = () => {
-  return Math.floor(Math.random() * 5) + 1;
+const animateFilmCans = () => {
+  $filmCan1El.addClass('.spin');
+  $filmCan2El.addClass('.spin');
 };
 
 // Event Listeners
@@ -45,16 +72,10 @@ const frameDecrement = () => {
 $playBtn.on('click', () => {
   $playBtn.fadeOut(1000);
   $controllerEl.removeClass('hidden');
-  $filmRemaning.html(filmRemain.currentFrame);
-  //   $controllerEl.fadeIn(1500);
-  //   $filmWrapEl.append('<div class="film-frame"></div>' * filmRemain.currentFrame);
+  filmRemain.renderRemaining();
 });
 
 $rollCamBtn.on('click', () => {
-  $filmCan1El.addClass('.spin');
-  $filmCan2El.addClass('.spin');
-
-  filmRemain.filmDecrement();
-  $filmRemaning.html(filmRemain.currentFrame);
+  filmRemain.renderFilmRemain();
   console.log('Rolling!');
 });

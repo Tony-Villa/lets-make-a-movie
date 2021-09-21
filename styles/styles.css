@@ -148,7 +148,7 @@ body {
 
 .film-frame {
   background: url('../assets/film-frame.png');
-  /* background-repeat: no-repeat; */
+  /* background-repeat: no-repeat */
   height: 100%;
 }
 
