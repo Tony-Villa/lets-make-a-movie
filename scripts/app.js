@@ -12,11 +12,17 @@ const $frameRemaning = $('.frame-rate-actual');
 const $timeRemaning = $('.time-remain-actual');
 
 // Button Variables
+
+// Live Game Buttons
 const $playBtn = $('#play-button');
 const $actionBtn = $('.action');
 const $lightsBtn = $('.lights');
 const $rollCamBtn = $('.roll-cam');
 const $reloadMagBtn = $('.reload-mag');
+
+// Reset Game Buttons
+const $winBtn = $('.win-btn');
+const $lossBtn = $('.lose-btn');
 
 // HTML Variables
 const $instructions = $('.instructions');
@@ -40,6 +46,10 @@ const timer = {
 
   timerDec: function () {
     const timerInterval = setInterval(() => {
+      if (youLose || youWin) {
+        clearInterval(timerInterval);
+      }
+
       this.timeRemaining--;
 
       if (this.timeRemaining <= 0) {
@@ -49,8 +59,6 @@ const timer = {
         youWin = true;
         checkWinLoss();
         return youWin;
-      } else if (youLose || youWin) {
-        clearInterval(timerInterval);
       }
     }, 1000);
   },
@@ -67,6 +75,7 @@ const timer = {
 
   resetTimer: function () {
     this.timeRemaining = 45;
+    this.isOutOfTime = false;
   },
 
   renderTimer: function () {
@@ -80,6 +89,10 @@ const lighting = {
 
   powerSurge: function () {
     const surgeInterval = setInterval(() => {
+      if (youLose || youWin) {
+        clearInterval(surgeInterval);
+      }
+
       if (Math.floor(Math.random() * 10 + 1 < 5)) {
         this.isOn = false;
       }
@@ -103,6 +116,10 @@ const frameRate = {
   frameDecrement: function () {
     this.currentFrame -= 0.98;
     const frameInterval = setInterval(() => {
+      if (youLose || youWin) {
+        clearInterval(frameInterval);
+      }
+
       this.currentFrame -= frameRandom();
 
       if (this.currentFrame <= 0) {
@@ -112,8 +129,6 @@ const frameRate = {
         youLose = true;
         checkWinLoss();
         return youLose;
-      } else if (youLose || youWin) {
-        clearInterval(frameInterval);
       }
     }, 1000);
   },
@@ -130,6 +145,7 @@ const frameRate = {
 
   resetFrames: function () {
     this.currentFrame = 23.98;
+    this.isRolling = true;
   },
 
   renderFrameRate: function () {
@@ -145,6 +161,10 @@ const filmRemain = {
 
   filmDecrement: function () {
     const decInterval = setInterval(() => {
+      if (youLose || youWin) {
+        clearInterval(decInterval);
+      }
+
       this.currentFrame--;
       this.renderFrames();
 
@@ -155,15 +175,17 @@ const filmRemain = {
         youLose = true;
         checkWinLoss();
         return youLose;
-      } else if (youLose || youWin) {
-        clearInterval(decInterval);
       }
     }, 1000);
   },
 
   renderRemaining: function () {
-    setInterval(() => {
+    const renderFilm = setInterval(() => {
       $filmRemaning.html(this.currentFrame);
+
+      if (youLose || youWin) {
+        clearInterval(renderFilm);
+      }
     }, 1000);
   },
 
@@ -189,6 +211,7 @@ const filmRemain = {
 
   resetMag: function () {
     this.currentFrame = 10;
+    this.isEmpty = false;
   },
 
   renderFilmRemain: function () {
@@ -206,6 +229,14 @@ const animateFilmCans = () => {
 const decScores = (time = 1000) => {
   filmRemain.renderFilmRemain();
   frameRate.renderFrameRate();
+};
+
+const startGame = () => {
+  // Game Display Changes
+  timer.renderTimer();
+  frameRate.renderFrameRate();
+  filmRemain.renderFilmRemain();
+  lighting.powerSurge();
 };
 
 const resetGame = () => {
@@ -236,14 +267,7 @@ $playBtn.on('click', () => {
 
 $actionBtn.on('click', () => {
   $instructions.addClass('hidden');
-  // Game Display Changes
-  timer.renderTimer();
-
-  frameRate.renderFrameRate();
-
-  filmRemain.renderFilmRemain();
-
-  lighting.powerSurge();
+  startGame();
 });
 
 $rollCamBtn.on('click', () => {
@@ -266,4 +290,19 @@ $lightsBtn.on('click', () => {
   lighting.isOn = true;
   $lightBeam.removeClass('hidden');
   lighting.powerSurge();
+});
+
+$winBtn.on('click', () => {
+  $winner.addClass('hidden');
+  resetGame();
+  youLose = false;
+  youWin = false;
+  startGame();
+});
+$lossBtn.on('click', () => {
+  $loser.addClass('hidden');
+  resetGame();
+  youLose = false;
+  youWin = false;
+  startGame();
 });
