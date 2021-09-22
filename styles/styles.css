@@ -28,6 +28,13 @@ body {
   text-align: center;
   margin-top: 0.5em;
   font-size: 48px;
+  color: black;
+
+  transition: color 2s;
+}
+
+.title-light {
+  color: white;
 }
 
 .play-now {
@@ -35,6 +42,8 @@ body {
   margin: 0 auto;
   justify-content: center;
   margin-top: 1.5em;
+
+  transition: opacity 2s;
 }
 
 .play-button {
@@ -52,6 +61,13 @@ body {
   background: radial-gradient(ellipse at top, #cdcecd, transparent),
     radial-gradient(ellipse at bottom, #cdcecd, transparent);
   overflow: hidden;
+  top: 0px;
+
+  transition: top 2s;
+}
+
+.movie-start {
+  top: -78px;
 }
 
 .instructions {
@@ -135,16 +151,27 @@ body {
 .end-screen h2 {
   font-size: 32px;
   margin-bottom: 0.5em;
+  text-align: center;
 }
 
 .end-screen p {
   font-size: 22px;
   margin-bottom: 1em;
   font-family: 'Hind Madurai', sans-serif;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.play-again {
+  display: flex;
+  justify-content: center;
+}
+
+.win-btn {
+  width: 200px;
 }
 
 .light-wrapper {
-  /* border: 1px solid blue; */
   position: absolute;
   height: 380px;
   width: 450px;
@@ -234,7 +261,7 @@ body {
   display: flex;
   justify-content: center;
   margin: 0 auto;
-  margin-top: 1.5em;
+  margin-top: -60px;
   width: 650px;
   justify-content: space-around;
 }
@@ -254,6 +281,10 @@ button {
 
 .spin {
   transform: rotate(180deg);
+}
+
+.poof {
+  opacity: 0;
 }
 
 .hidden {

@@ -29,6 +29,8 @@ const $instructions = $('.instructions');
 const $winner = $('#win-screen');
 const $loser = $('#lose-screen');
 const $bg = $('.main-content');
+const $title = $('.title');
+const $screen = $('.movie-screen');
 
 const filmFrame = '<div class="film-frame"></div>';
 
@@ -43,7 +45,7 @@ let youLose = false;
 
 // Game Objects
 const timer = {
-  timeRemaining: 45,
+  timeRemaining: 5,
   isOutOfTime: false,
 
   timerDec: function () {
@@ -262,10 +264,12 @@ const checkWinLoss = () => {
 // Event Listeners
 $playBtn.on('click', () => {
   // Style Changes
-  $playBtn.fadeOut(1000);
+  $playBtn.addClass('poof');
   $controllerEl.removeClass('hidden');
   $instructions.removeClass('hidden');
   $bg.addClass('bg-dim');
+  $title.addClass('title-light');
+  $screen.addClass('movie-start');
 });
 
 $actionBtn.on('click', () => {
