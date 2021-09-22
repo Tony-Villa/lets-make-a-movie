@@ -4,9 +4,9 @@
 - [User Stories](#user-stories)
 - [Wireframes](#Wireframes)
 
-# Let's Make a Movie
+# Martini Shot
 
-In **Let's Make a Movie**, you play as a film crew working to keep the movie alive.
+In **Martini Shot**, you play as a film crew working to keep the movie alive.
 
 Play as multiple crew members:
 
@@ -18,7 +18,7 @@ Play as multiple crew members:
 
 When the user lands on the page, they will be greeted by:
 
-- The title of the game **Let's Make a Movie**
+- The title of the game **Martini Shot**
 - An **Action!** button (Start Game)
 - And an empty screen, resembling a movie screen.
 
