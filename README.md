@@ -1,6 +1,6 @@
 # Table of Contents
 
-- [Game Description](#let's-make-a-movie)
+- [Game Description](#martini-shot)
 - [User Stories](#user-stories)
 - [Wireframes](#Wireframes)
 
