@@ -28,6 +28,8 @@ const $lossBtn = $('.lose-btn');
 const $instructions = $('.instructions');
 const $winner = $('#win-screen');
 const $loser = $('#lose-screen');
+const $bg = $('.main-content');
+
 const filmFrame = '<div class="film-frame"></div>';
 
 // Randomizers
@@ -41,7 +43,7 @@ let youLose = false;
 
 // Game Objects
 const timer = {
-  timeRemaining: 45,
+  timeRemaining: 5,
   isOutOfTime: false,
 
   timerDec: function () {
@@ -263,6 +265,7 @@ $playBtn.on('click', () => {
   $playBtn.fadeOut(1000);
   $controllerEl.removeClass('hidden');
   $instructions.removeClass('hidden');
+  $bg.addClass('bg-dim');
 });
 
 $actionBtn.on('click', () => {

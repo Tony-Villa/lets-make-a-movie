@@ -4,14 +4,23 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  overflow: hidden;
 }
 
 body {
   font-family: 'Limelight', cursive;
 }
 
-.bg {
+.main-content {
   position: relative;
+  background-color: rgba(0, 0, 0, 0);
+  height: 100vh;
+
+  transition: background-color 1s;
+}
+
+.bg-dim {
+  background-color: rgba(0, 0, 0, 0.9);
 }
 
 .title {
