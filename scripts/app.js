@@ -236,10 +236,6 @@ const filmRemain = {
 };
 
 // Functions
-const animateFilmCans = () => {
-  $filmCan1El.addClass('.spin');
-  $filmCan2El.addClass('.spin');
-};
 
 const decScores = (time = 1000) => {
   filmRemain.renderFilmRemain();
@@ -279,6 +275,14 @@ const checkWinLoss = () => {
   }
 };
 
+// Animations
+let rot = 180;
+const rotateCans = () => {
+  $filmCan1El.css('transform', `rotate(${rot}deg)`);
+  $filmCan2El.css('transform', `rotate(${rot}deg)`);
+  rot += 180;
+};
+
 // Event Listeners
 $playBtn.on('click', () => {
   // Style Changes
@@ -297,16 +301,23 @@ $actionBtn.on('click', () => {
 });
 
 $rollCamBtn.on('click', () => {
+  rotateCans();
   if (frameRate.isRolling) {
     if (frameRate.currentFrame < 23) {
       frameRate.currentFrame++;
       frameRate.renderCurrent();
+
       // if ($filmCan1El.hasClass('spin')) {
       //   $filmCan1El.removeClass('spin');
       // } else {
       //   $filmCan1El.addClass('spin');
       // }
     }
+    // if ($filmCan2El.hasClass('spin')) {
+    //   $filmCan2El.removeClass('spin');
+    // } else {
+    //   $filmCan2El.addClass('spin');
+    // }
   }
 });
 
@@ -337,5 +348,3 @@ $lossBtn.on('click', () => {
   youWin = false;
   startGame();
 });
-
-// console.log($filmFrame.width());

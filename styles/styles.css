@@ -248,24 +248,29 @@ body {
   position: absolute;
   background: url('../assets/film-can.png');
   background-repeat: no-repeat;
-  height: 55px;
-  width: 55px;
+  height: 53px;
+  width: 53px;
   top: 26px;
   left: 57px;
+  /* border: 1px solid black; */
 
-  transform: rotate(0);
+  /* transform: rotate(0); */
 
-  transition: transform 2s;
+  transition: transform 1s;
 }
 
 .film-can-2 {
   position: absolute;
   background: url('../assets/film-can.png');
   background-repeat: no-repeat;
-  height: 55px;
-  width: 55px;
+  height: 53px;
+  width: 53px;
   top: 64px;
   left: 7px;
+
+  /* transform: rotate(0); */
+
+  transition: transform 1s;
 }
 
 .film-wrapper {
@@ -334,7 +339,7 @@ button:active {
 
 /* Animations */
 .spin {
-  transform: rotate(180deg);
+  transform: rotate(360deg);
 }
 
 .tadaa {
