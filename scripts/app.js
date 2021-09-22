@@ -33,6 +33,7 @@ const $bg = $('.main-content');
 const $title = $('.title');
 const $screen = $('.movie-screen');
 const $crowd = $('.crowd');
+const $screenCover = $('.screen-cover');
 
 const $filmFrame = $('.film-frame');
 
@@ -293,6 +294,7 @@ $playBtn.on('click', () => {
   $title.addClass('title-light');
   $screen.addClass('movie-start');
   $crowd.addClass('tadaa');
+  // $screenCover.addClass('tadaa');
 });
 
 $actionBtn.on('click', () => {

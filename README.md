@@ -63,9 +63,12 @@ Once the user wins, a 'congratulations' note will appear and the screen will smo
 ## Landing Page
 
 The user is greeted with a landing page consisting of the the title **Martini Shot** as well as a play button and a box resembling a screen.
-![image info](./assets/wireframes/wire-landing.png)
+
+![Landing Page](./assets/wireframes/wire-landing.png)
+_After testing, opted to have assets on screen in landing page_
 
 ## Play Page
 
 After the user presses the play button, all the assets will appear inside the screen for the game to be able to begin
-![image info](./assets/wireframes/wire-play.png)
+
+![Play Page](./assets/wireframes/wire-play.png)

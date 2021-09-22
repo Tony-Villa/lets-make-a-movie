@@ -66,6 +66,10 @@ body {
   transition: top 2s;
 }
 
+.screen-cover {
+  opacity: 0;
+}
+
 .movie-start {
   top: -78px;
 }
