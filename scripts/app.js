@@ -12,8 +12,6 @@ const $frameRemaning = $('.frame-rate-actual');
 const $timeRemaning = $('.time-remain-actual');
 const $reloadWarn = $('.reload');
 
-// Button Variables
-
 // Live Game Buttons
 const $playBtn = $('#play-button');
 const $actionBtn = $('.action');
@@ -258,14 +256,14 @@ const startGame = () => {
 };
 
 const resetGame = () => {
-  $filmRemaning.html(filmRemain.currentFrame);
-  $frameRemaning.html(frameRate.currentFrame);
   lighting.resetLights();
   timer.resetTimer();
   frameRate.resetFrames();
   filmRemain.resetMag();
   filmRemain.renderFrames();
   $reloadWarn.addClass('hidden');
+  $filmRemaning.html(filmRemain.currentFrame);
+  $frameRemaning.html(frameRate.currentFrame);
 };
 
 const checkWinLoss = () => {

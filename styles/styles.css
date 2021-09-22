@@ -218,7 +218,6 @@ body {
 }
 
 .light-beam {
-  /* border: 1px solid orange; */
   position: absolute;
   background: url('../assets/light-beam.png');
   background-repeat: no-repeat;
@@ -256,9 +255,6 @@ body {
   width: 53px;
   top: 26px;
   left: 57px;
-  /* border: 1px solid black; */
-
-  /* transform: rotate(0); */
 
   transition: transform 1s;
 }
@@ -271,8 +267,6 @@ body {
   width: 53px;
   top: 64px;
   left: 7px;
-
-  /* transform: rotate(0); */
 
   transition: transform 1s;
 }
@@ -342,9 +336,9 @@ button:active {
 }
 
 /* Animations */
-.spin {
+/* .spin {
   transform: rotate(360deg);
-}
+} */
 
 .tadaa {
   opacity: 100;
