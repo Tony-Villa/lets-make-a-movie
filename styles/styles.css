@@ -279,6 +279,13 @@ button {
   font-size: 22px;
 }
 
+button:active {
+  background: radial-gradient(ellipse at top, #dadbda, transparent),
+    radial-gradient(ellipse at bottom, #dadbda, transparent);
+  box-shadow: inset 0px 0px 5px #c1c1c1;
+  outline: none;
+}
+
 .crowd {
   position: absolute;
   height: 25%;
