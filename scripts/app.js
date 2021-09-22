@@ -113,6 +113,9 @@ const lighting = {
 
   resetLights: function () {
     this.isOn = true;
+    if ($lightBeam.hasClass('hidden')) {
+      $lightBeam.removeClass('hidden');
+    }
   },
 };
 
