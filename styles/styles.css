@@ -114,7 +114,7 @@ body {
   position: absolute;
   border: 2px solid black;
   border-radius: 5px;
-  height: 100px;
+  height: 110px;
   width: 35%;
   left: 15px;
   top: 15px;
@@ -133,6 +133,11 @@ body {
 }
 
 .score-item-actual {
+  font-size: 20px;
+}
+
+.reload {
+  text-align: center;
   font-size: 20px;
 }
 
@@ -275,6 +280,7 @@ body {
   background: url('../assets/film-frame.png');
   /* background-repeat: no-repeat */
   height: 100%;
+  width: 100%;
 }
 
 .game-controls {

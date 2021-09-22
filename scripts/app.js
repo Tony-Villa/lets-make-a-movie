@@ -10,6 +10,7 @@ const $lightBeam = $('.light-beam');
 const $filmRemaning = $('.film-remain-actual');
 const $frameRemaning = $('.frame-rate-actual');
 const $timeRemaning = $('.time-remain-actual');
+const $reloadWarn = $('.reload');
 
 // Button Variables
 
@@ -33,7 +34,7 @@ const $title = $('.title');
 const $screen = $('.movie-screen');
 const $crowd = $('.crowd');
 
-const filmFrame = '<div class="film-frame"></div>';
+const $filmFrame = $('.film-frame');
 
 // Randomizers
 const frameRandom = () => {
@@ -160,18 +161,24 @@ const frameRate = {
 };
 
 const filmRemain = {
-  startFrame: 10,
-  currentFrame: 10,
+  startFrame: 11,
+  currentFrame: 11,
   isEmpty: false,
 
   filmDecrement: function () {
     const decInterval = setInterval(() => {
+      let filmWidth = $filmFrame.width() - 65.16;
       if (youLose || youWin) {
         clearInterval(decInterval);
       }
 
       this.currentFrame--;
-      this.renderFrames();
+      this.removeFrames(filmWidth);
+      // this.renderFrames();
+
+      if (this.currentFrame < 4) {
+        $reloadWarn.removeClass('hidden');
+      }
 
       if (this.currentFrame <= 0) {
         clearInterval(decInterval);
@@ -198,16 +205,18 @@ const filmRemain = {
     if (this.currentFrame < 4) {
       this.currentFrame += this.startFrame - this.currentFrame;
       this.renderFrames();
+      $reloadWarn.addClass('hidden');
     } else {
       return;
     }
   },
 
-  renderFrames: function () {
-    $filmWrapEl.empty();
-    for (let i = 0; i <= this.currentFrame; i++) {
-      $filmWrapEl.html(filmFrame);
-    }
+  renderFrames: function (numFrames) {
+    $filmFrame.css('width', '724px');
+  },
+
+  removeFrames: function (newWidth) {
+    $filmFrame.css(`width`, `${newWidth}`);
   },
 
   checkMag: function () {
@@ -245,10 +254,14 @@ const startGame = () => {
 };
 
 const resetGame = () => {
+  timer.timeRemaining = 45;
+  frameRate.currentFrame = frameRate.startFrame;
+  filmRemain.currentFrame = filmRemain.startFrame;
   lighting.resetLights();
   timer.resetTimer();
   frameRate.resetFrames();
   filmRemain.resetMag();
+  $reloadWarn.addClass('hidden');
 };
 
 const checkWinLoss = () => {
@@ -320,3 +333,5 @@ $lossBtn.on('click', () => {
   youWin = false;
   startGame();
 });
+
+// console.log($filmFrame.width());
