@@ -47,6 +47,7 @@ let youLose = false;
 
 // Game Objects
 const timer = {
+  startingTime: 45,
   timeRemaining: 45,
   isOutOfTime: false,
 
@@ -80,7 +81,7 @@ const timer = {
   },
 
   resetTimer: function () {
-    this.timeRemaining = 45;
+    this.timeRemaining = this.startingTime;
     this.isOutOfTime = false;
   },
 
@@ -150,7 +151,7 @@ const frameRate = {
   },
 
   resetFrames: function () {
-    this.currentFrame = 23.98;
+    this.currentFrame = this.startFrame;
     this.isRolling = true;
   },
 
@@ -224,7 +225,7 @@ const filmRemain = {
   },
 
   resetMag: function () {
-    this.currentFrame = 10;
+    this.currentFrame = this.startFrame;
     this.isEmpty = false;
   },
 
@@ -257,10 +258,13 @@ const resetGame = () => {
   timer.timeRemaining = 45;
   frameRate.currentFrame = frameRate.startFrame;
   filmRemain.currentFrame = filmRemain.startFrame;
+  $filmRemaning.html(filmRemain.currentFrame);
+  $frameRemaning.html(frameRate.currentFrame);
   lighting.resetLights();
   timer.resetTimer();
   frameRate.resetFrames();
   filmRemain.resetMag();
+  filmRemain.renderFrames();
   $reloadWarn.addClass('hidden');
 };
 
