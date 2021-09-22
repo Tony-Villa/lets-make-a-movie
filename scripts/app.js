@@ -206,7 +206,7 @@ const filmRemain = {
   renderFrames: function () {
     $filmWrapEl.empty();
     for (let i = 0; i <= this.currentFrame; i++) {
-      $filmWrapEl.append(filmFrame);
+      $filmWrapEl.html(filmFrame);
     }
   },
 

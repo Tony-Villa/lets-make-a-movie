@@ -114,7 +114,7 @@ body {
   position: absolute;
   border: 2px solid black;
   border-radius: 5px;
-  height: 120px;
+  height: 100px;
   width: 35%;
   left: 15px;
   top: 15px;
@@ -134,6 +134,26 @@ body {
 
 .score-item-actual {
   font-size: 20px;
+}
+
+.timer-wrapper {
+  position: absolute;
+  display: flex;
+  border: 2px solid black;
+  border-radius: 5px;
+  height: 50px;
+  width: 70px;
+  right: 15px;
+  top: 15px;
+  padding: 10px;
+  background-color: rgba(255, 255, 255, 0.4);
+  justify-content: center;
+  align-items: center;
+}
+
+.time-remain-actual {
+  font-size: 28px;
+  text-align: center;
 }
 
 .end-screen {
