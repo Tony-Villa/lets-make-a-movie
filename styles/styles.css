@@ -279,8 +279,33 @@ button {
   font-size: 22px;
 }
 
+.crowd {
+  position: absolute;
+  height: 25%;
+  width: 100%;
+  bottom: 0;
+  background: url(../assets/crowd.png);
+  background-size: cover;
+  background-position-x: -55px;
+  opacity: 0;
+
+  transition: opacity 2s;
+}
+
+@media screen and (min-width: 1500px) {
+  .crowd {
+    background-size: contain;
+    background-position-x: 225px;
+  }
+}
+
+/* Animations */
 .spin {
   transform: rotate(180deg);
+}
+
+.tadaa {
+  opacity: 100;
 }
 
 .poof {

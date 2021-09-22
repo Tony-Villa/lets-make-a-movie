@@ -31,6 +31,7 @@ const $loser = $('#lose-screen');
 const $bg = $('.main-content');
 const $title = $('.title');
 const $screen = $('.movie-screen');
+const $crowd = $('.crowd');
 
 const filmFrame = '<div class="film-frame"></div>';
 
@@ -45,7 +46,7 @@ let youLose = false;
 
 // Game Objects
 const timer = {
-  timeRemaining: 5,
+  timeRemaining: 45,
   isOutOfTime: false,
 
   timerDec: function () {
@@ -194,7 +195,7 @@ const filmRemain = {
   },
 
   magReload: function () {
-    if (this.currentFrame < 3) {
+    if (this.currentFrame < 4) {
       this.currentFrame += this.startFrame - this.currentFrame;
       this.renderFrames();
     } else {
@@ -270,6 +271,7 @@ $playBtn.on('click', () => {
   $bg.addClass('bg-dim');
   $title.addClass('title-light');
   $screen.addClass('movie-start');
+  $crowd.addClass('tadaa');
 });
 
 $actionBtn.on('click', () => {
