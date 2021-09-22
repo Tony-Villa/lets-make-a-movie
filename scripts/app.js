@@ -43,7 +43,7 @@ let youLose = false;
 
 // Game Objects
 const timer = {
-  timeRemaining: 5,
+  timeRemaining: 45,
   isOutOfTime: false,
 
   timerDec: function () {
@@ -278,6 +278,11 @@ $rollCamBtn.on('click', () => {
     if (frameRate.currentFrame < 23) {
       frameRate.currentFrame++;
       frameRate.renderCurrent();
+      // if ($filmCan1El.hasClass('spin')) {
+      //   $filmCan1El.removeClass('spin');
+      // } else {
+      //   $filmCan1El.addClass('spin');
+      // }
     }
   }
 });

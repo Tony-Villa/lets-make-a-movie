@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Limelight&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Hind+Madurai:wght@500&display=swap');
 
 * {
   box-sizing: border-box;
@@ -60,7 +61,7 @@ body {
   background-color: rgba(255, 255, 255, 1);
   z-index: 5;
   width: 90%;
-  top: 5px;
+  top: 02px;
   left: 35px;
   box-shadow: 5px 5px 15px 5px rgba(0, 0, 0, 0.51);
 }
@@ -72,8 +73,12 @@ body {
 }
 
 .instructions p {
-  font-size: 18px;
+  font-size: 16px;
   margin-bottom: 0.25em;
+  font-family: 'Hind Madurai', sans-serif;
+  padding-left: 25px;
+  padding-right: 25px;
+  /* font-weight: bold; */
 }
 
 .start-game {
@@ -135,6 +140,7 @@ body {
 .end-screen p {
   font-size: 22px;
   margin-bottom: 1em;
+  font-family: 'Hind Madurai', sans-serif;
 }
 
 .light-wrapper {
@@ -194,6 +200,10 @@ body {
   width: 55px;
   top: 26px;
   left: 57px;
+
+  transform: rotate(0);
+
+  transition: transform 2s;
 }
 
 .film-can-2 {
@@ -225,8 +235,25 @@ body {
   justify-content: center;
   margin: 0 auto;
   margin-top: 1.5em;
-  width: 500px;
+  width: 650px;
   justify-content: space-around;
+}
+
+button {
+  border: none;
+  padding: 10px;
+  background: radial-gradient(ellipse at top, #cdcecd, transparent),
+    radial-gradient(ellipse at bottom, #cdcecd, transparent);
+  overflow: hidden;
+  border: 2px solid black;
+  border-radius: 15px;
+  width: 180px;
+  font-family: 'Limelight', cursive;
+  font-size: 22px;
+}
+
+.spin {
+  transform: rotate(180deg);
 }
 
 .hidden {
