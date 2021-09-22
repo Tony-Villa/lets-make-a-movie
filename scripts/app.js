@@ -33,8 +33,6 @@ const $bg = $('.main-content');
 const $title = $('.title');
 const $screen = $('.movie-screen');
 const $crowd = $('.crowd');
-const $screenCover = $('.screen-cover');
-
 const $filmFrame = $('.film-frame');
 
 // Randomizers
@@ -45,6 +43,9 @@ const frameRandom = () => {
 // Win/Loss Variables
 let youWin = false;
 let youLose = false;
+
+// Animation Global Variables
+let rot = 180;
 
 // Game Objects
 const timer = {
@@ -83,6 +84,7 @@ const timer = {
 
   resetTimer: function () {
     this.timeRemaining = this.startingTime;
+    $timeRemaning.html(this.timeRemaining);
     this.isOutOfTime = false;
   },
 
@@ -230,6 +232,7 @@ const filmRemain = {
 
   resetMag: function () {
     this.currentFrame = this.startFrame;
+    $filmRemaning.html(this.currentFrame);
     this.isEmpty = false;
   },
 
@@ -255,9 +258,9 @@ const startGame = () => {
 };
 
 const resetGame = () => {
-  timer.timeRemaining = 45;
-  frameRate.currentFrame = frameRate.startFrame;
-  filmRemain.currentFrame = filmRemain.startFrame;
+  // timer.timeRemaining = 45;
+  // frameRate.currentFrame = frameRate.startFrame;
+  // filmRemain.currentFrame = filmRemain.startFrame;
   $filmRemaning.html(filmRemain.currentFrame);
   $frameRemaning.html(frameRate.currentFrame);
   lighting.resetLights();
@@ -280,7 +283,7 @@ const checkWinLoss = () => {
 };
 
 // Animations
-let rot = 180;
+
 const rotateCans = () => {
   $filmCan1El.css('transform', `rotate(${rot}deg)`);
   $filmCan2El.css('transform', `rotate(${rot}deg)`);
@@ -297,7 +300,6 @@ $playBtn.on('click', () => {
   $title.addClass('title-light');
   $screen.addClass('movie-start');
   $crowd.addClass('tadaa');
-  // $screenCover.addClass('tadaa');
 });
 
 $actionBtn.on('click', () => {
@@ -311,18 +313,7 @@ $rollCamBtn.on('click', () => {
     if (frameRate.currentFrame < 23) {
       frameRate.currentFrame++;
       frameRate.renderCurrent();
-
-      // if ($filmCan1El.hasClass('spin')) {
-      //   $filmCan1El.removeClass('spin');
-      // } else {
-      //   $filmCan1El.addClass('spin');
-      // }
     }
-    // if ($filmCan2El.hasClass('spin')) {
-    //   $filmCan2El.removeClass('spin');
-    // } else {
-    //   $filmCan2El.addClass('spin');
-    // }
   }
 });
 
