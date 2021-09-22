@@ -258,9 +258,6 @@ const startGame = () => {
 };
 
 const resetGame = () => {
-  // timer.timeRemaining = 45;
-  // frameRate.currentFrame = frameRate.startFrame;
-  // filmRemain.currentFrame = filmRemain.startFrame;
   $filmRemaning.html(filmRemain.currentFrame);
   $frameRemaning.html(frameRate.currentFrame);
   lighting.resetLights();
