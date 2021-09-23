@@ -295,7 +295,7 @@ const checkWinLoss = () => {
 // Animations
 
 const rotateCans = () => {
-  if (frameRate.isRolling) {
+  if (!youWin || !youLose) {
     $filmCan1El.css('transform', `rotate(${rot}deg)`);
     $filmCan2El.css('transform', `rotate(${rot}deg)`);
     rot += 180;
@@ -322,9 +322,9 @@ $actionBtn.on('click', () => {
 });
 
 $rollCamBtn.on('click', () => {
-  rotateCans();
   if (frameRate.isRolling) {
     if (frameRate.currentFrame < 23) {
+      rotateCans();
       frameRate.currentFrame++;
       frameRate.renderCurrent();
     }
