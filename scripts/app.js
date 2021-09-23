@@ -33,17 +33,19 @@ const $screen = $('.movie-screen');
 const $crowd = $('.crowd');
 const $filmFrame = $('.film-frame');
 
-// Randomizers
-const frameRandom = () => {
-  return Math.floor(Math.random() * 3) + 1;
-};
-
 // Win/Loss Variables
 let youWin = false;
 let youLose = false;
 
 // Animation Global Variables
 let rot = 180;
+
+// Randomizers
+const frameRandom = () => {
+  return Math.floor(Math.random() * 3) + 1;
+};
+
+/////////////////////////////////////
 
 // Game Objects
 const timer = {
@@ -251,6 +253,8 @@ const filmRemain = {
   },
 };
 
+///////////////////////////////////////////////////
+
 // Functions
 
 const decScores = (time = 1000) => {
@@ -295,6 +299,8 @@ const rotateCans = () => {
   $filmCan2El.css('transform', `rotate(${rot}deg)`);
   rot += 180;
 };
+
+/////////////////////////////////////////////////////
 
 // Event Listeners
 $playBtn.on('click', () => {
