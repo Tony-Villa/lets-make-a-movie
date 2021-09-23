@@ -295,9 +295,11 @@ const checkWinLoss = () => {
 // Animations
 
 const rotateCans = () => {
-  $filmCan1El.css('transform', `rotate(${rot}deg)`);
-  $filmCan2El.css('transform', `rotate(${rot}deg)`);
-  rot += 180;
+  if (frameRate.isRolling) {
+    $filmCan1El.css('transform', `rotate(${rot}deg)`);
+    $filmCan2El.css('transform', `rotate(${rot}deg)`);
+    rot += 180;
+  }
 };
 
 /////////////////////////////////////////////////////
@@ -311,7 +313,7 @@ $playBtn.on('click', () => {
   $bg.addClass('bg-dim');
   $title.addClass('title-light');
   $screen.addClass('movie-start');
-  $crowd.addClass('tadaa');
+  $crowd.removeClass('hidden').addClass('tadaa');
 });
 
 $actionBtn.on('click', () => {
