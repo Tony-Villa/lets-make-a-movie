@@ -126,6 +126,7 @@ const frameRate = {
 
   frameDecrement: function () {
     this.currentFrame -= 0.98;
+
     const frameInterval = setInterval(() => {
       if (youLose || youWin) {
         clearInterval(frameInterval);
