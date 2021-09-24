@@ -115,10 +115,6 @@ const lighting = {
     }
   },
 
-  lightingClear: function () {
-    clearTimeout(lightingTimer);
-  },
-
   resetLights: function () {
     this.isOn = true;
     if ($lightBeam.hasClass('hidden')) {
