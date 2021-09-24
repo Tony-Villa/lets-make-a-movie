@@ -40,6 +40,9 @@ let youLose = false;
 // Animation Global Variables
 let rot = 180;
 
+// Timer IDs
+let lightingTimer;
+
 // Randomizers
 const frameRandom = () => {
   return Math.floor(Math.random() * 3) + 1;
@@ -105,8 +108,8 @@ const lighting = {
 
       if (Math.floor(Math.random() * 10 + 1 < 5)) {
         this.isOn = false;
-      }
-      if (!this.isOn) {
+        // }
+        // if (!this.isOn) {
         clearInterval(surgeInterval);
         $lightBeam.addClass('hidden');
         // this.lightingCheck();
@@ -115,7 +118,7 @@ const lighting = {
   },
 
   // lightingCheck: function () {
-  //   setTimeout(() => {
+  //   lightingTimer = setTimeout(() => {
   //     if (!this.isOn) {
   //       youLose = true;
   //       checkWinLoss();
@@ -283,10 +286,12 @@ const resetGame = () => {
 
 const checkWinLoss = () => {
   if (youWin) {
+    clearTimeout(lightingTimer);
     resetGame();
     $winner.removeClass('hidden');
   }
   if (youLose) {
+    clearTimeout(lightingTimer);
     resetGame();
     $loser.removeClass('hidden');
   }
