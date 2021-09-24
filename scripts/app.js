@@ -107,7 +107,6 @@ const lighting = {
     if (Math.floor(Math.random() * 10 + 1 < 5)) {
       this.isOn = false;
       $lightBeam.addClass('hidden');
-      // this.lightingCheck();
     }
 
     if (checkDelay > 4) {
@@ -115,15 +114,6 @@ const lighting = {
       checkWinLoss();
     }
   },
-
-  // lightingCheck: function () {
-  //   lightingTimer = setTimeout(() => {
-  //     if (!this.isOn) {
-  //       youLose = true;
-  //       checkWinLoss();
-  //     }
-  //   }, 5000);
-  // },
 
   lightingClear: function () {
     clearTimeout(lightingTimer);
