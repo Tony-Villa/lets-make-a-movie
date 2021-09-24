@@ -109,19 +109,19 @@ const lighting = {
       if (!this.isOn) {
         clearInterval(surgeInterval);
         $lightBeam.addClass('hidden');
-        this.lightingCheck();
+        // this.lightingCheck();
       }
     }, 1000);
   },
 
-  lightingCheck: function () {
-    setTimeout(() => {
-      if (!this.isOn) {
-        youLose = true;
-        checkWinLoss();
-      }
-    }, 5000);
-  },
+  // lightingCheck: function () {
+  //   setTimeout(() => {
+  //     if (!this.isOn) {
+  //       youLose = true;
+  //       checkWinLoss();
+  //     }
+  //   }, 5000);
+  // },
 
   resetLights: function () {
     this.isOn = true;
