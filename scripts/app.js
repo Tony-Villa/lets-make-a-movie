@@ -99,22 +99,21 @@ const timer = {
 
 const lighting = {
   isOn: true,
+  checkDelay: 0,
 
   powerSurge: function () {
-    const surgeInterval = setInterval(() => {
-      if (youLose || youWin) {
-        clearInterval(surgeInterval);
-      }
+    this.isOn ? (checkDelay = 0) : checkDelay++;
 
-      if (Math.floor(Math.random() * 10 + 1 < 5)) {
-        this.isOn = false;
-        // }
-        // if (!this.isOn) {
-        clearInterval(surgeInterval);
-        $lightBeam.addClass('hidden');
-        // this.lightingCheck();
-      }
-    }, 1000);
+    if (Math.floor(Math.random() * 10 + 1 < 5)) {
+      this.isOn = false;
+      $lightBeam.addClass('hidden');
+      // this.lightingCheck();
+    }
+
+    if (checkDelay > 4) {
+      youLose = true;
+      checkWinLoss();
+    }
   },
 
   // lightingCheck: function () {
@@ -125,6 +124,10 @@ const lighting = {
   //     }
   //   }, 5000);
   // },
+
+  lightingClear: function () {
+    clearTimeout(lightingTimer);
+  },
 
   resetLights: function () {
     this.isOn = true;
@@ -259,10 +262,12 @@ const filmRemain = {
 ///////////////////////////////////////////////////
 
 // Functions
+let gameTickTimer;
 
-const decScores = (time = 1000) => {
-  filmRemain.renderFilmRemain();
-  frameRate.renderFrameRate();
+const gameTick = () => {
+  gameTickTimer = setInterval(() => {
+    lighting.powerSurge();
+  }, 1000);
 };
 
 const startGame = () => {
@@ -271,9 +276,11 @@ const startGame = () => {
   frameRate.renderFrameRate();
   filmRemain.renderFilmRemain();
   lighting.powerSurge();
+  gameTick();
 };
 
 const resetGame = () => {
+  clearTimeout(lightingTimer);
   lighting.resetLights();
   timer.resetTimer();
   frameRate.resetFrames();
@@ -286,11 +293,12 @@ const resetGame = () => {
 
 const checkWinLoss = () => {
   if (youWin) {
+    clearInterval(gameTickTimer);
     clearTimeout(lightingTimer);
     resetGame();
     $winner.removeClass('hidden');
-  }
-  if (youLose) {
+  } else if (youLose) {
+    clearInterval(gameTickTimer);
     clearTimeout(lightingTimer);
     resetGame();
     $loser.removeClass('hidden');
@@ -346,7 +354,6 @@ $reloadMagBtn.on('click', () => {
 $lightsBtn.on('click', () => {
   lighting.isOn = true;
   $lightBeam.removeClass('hidden');
-  lighting.powerSurge();
 });
 
 $winBtn.on('click', () => {
